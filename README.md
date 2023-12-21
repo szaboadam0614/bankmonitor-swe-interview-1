@@ -33,7 +33,7 @@ A shell is provided to you so you can inspect your container in more detail. The
   - we should run two instances of the spring boot app
     1. using H2 in memory database, we shut down gracefully - use `application-h2.yml`
     2. before shutting down, we should start an instance which is using postgres SQL - use `application.yml` - and should port the application to this instance.
-    3. after H2 in memory database is down, we should run a migration script - like `migrate.sh` - which populate the postgres database.
+    3. after H2 in memory database is down, we should run a migration script - like `migrate.sh` - which populate the postgres database. (not working properly at the moment)
        - here we can dump the h2 db schema, transform it, and execute insert scripts, but for now to keep it simple, I use flyway for db migration which is more future prof solution
        - we should refer to the installed jars (h2, postgres) in the Docker container
   - other option can be using a queue, where we put the incoming request, and while we are changing from H2 to postgres, the request are stored in this queue, and will be processed after the postgres instance is live. Here we also need a migration script.
